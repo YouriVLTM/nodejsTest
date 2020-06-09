@@ -6,6 +6,10 @@ const app = express();
 //const https = require('https');
 
 
+
+
+
+
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -25,7 +29,11 @@ app.use(function(req, res, next) {
 
 //var httpserver = http.createServer(httpapp);
 //var io = require('socket.io').listen(server);
-var io = require('socket.io').listen(PORT);
+//var io = require('socket.io').listen(PORT);
+
+const { Server } = require('ws');
+
+const io = new Server(app);
 
 
 app.get('/', (req, res) => {
