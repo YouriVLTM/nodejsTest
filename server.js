@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express();
+const https = require('https');
 
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -21,7 +22,12 @@ app.use(function(req, res, next) {
    });
 
 
-   
+
+var httpserver = http.createServer(httpapp);
+//var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(httpserver);
+
+
 app.get('/', (req, res) => {
   res.json({"message": "TEST"});
 });
