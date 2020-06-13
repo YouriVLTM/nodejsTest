@@ -34,6 +34,7 @@ app.use(function(req, res, next) {
 //const { Server } = require('ws');
 
 //const io = new Server(app);
+const io = socketIO(app);
 
 
 app.get('/', (req, res) => {
