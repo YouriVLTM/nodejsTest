@@ -3,13 +3,7 @@ const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
-const app = express();
-
-//const https = require('https');
-
-
-
-
+const app = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -42,7 +36,3 @@ const io = socketIO(app);
 app.get('/', (req, res) => {
   res.json({"message": "TEST"});
 });
-
-
-
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
